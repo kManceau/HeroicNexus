@@ -13,6 +13,7 @@ class Hero extends Model
     use HasFactory;
     protected $table = 'hero';
     public $timestamps = false;
+    protected $fillable = ['name', 'gender', 'race', 'description'];
 
     public function user(){
         return $this->belongsToMany(User::class);

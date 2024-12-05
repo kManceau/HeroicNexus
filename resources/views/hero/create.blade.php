@@ -9,7 +9,7 @@
                         <h5 class="card-title text-primary">Add a New Hero</h5>
 
                         <form action="/hero/store" method="post" enctype="multipart/form-data">
-
+                            @csrf
                             <div class="form-group my-3">
                                 <label for="name" class="mb-2">Hero's Name (Required)</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -41,7 +41,7 @@
                                 <label for="faction" class="input-group-text" style="background-color:#121212;">Hero's Faction (required)</label>
                                 <select class="form-select" id="faction" name="faction">
                                     @foreach($factions as $faction)
-                                        <option value="{{$faction->id}}">{{$faction->name}}</option>
+                                        <option value="{{$faction->id}}">{{$faction->universe->name}} - {{$faction->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
