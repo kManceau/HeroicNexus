@@ -11,6 +11,9 @@ use App\Models\Faction;
 class Hero extends Model
 {
     use HasFactory;
+    protected $table = 'hero';
+    public $timestamps = false;
+
     public function user(){
         return $this->belongsToMany(User::class);
     }

@@ -9,6 +9,9 @@ use App\Models\Weapon;
 class Weapon extends Model
 {
     use HasFactory;
+    protected $table = 'weapon';
+    public $timestamps = false;
+
     public function hero(){
         return $this->belongsToMany(Hero::class);
     }
