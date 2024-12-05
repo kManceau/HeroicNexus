@@ -14,10 +14,6 @@ class WeaponSeeder extends Seeder
     public function run(): void
     {
         Weapon::factory()->create([
-            'name' => 'Revolution',
-            'type' => 'Strike'
-        ]);
-        Weapon::factory()->create([
             'name' => 'LightSaber',
             'type' => 'Sword'
         ]);

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+
+        <div class="container">
         <div class="row">
             @foreach($heroes as $hero)
                 <div class="col-md-3 mb-4 d-flex align-items-stretch">
@@ -11,6 +12,8 @@
                             <h6 class="card-subtitle mb-2 text-muted">{{ $hero->race }} @if($hero->gender)
                                     | {{ $hero->gender }}
                                 @endif</h6>
+                            <hr>
+                            <img src="img/heroes/{{$hero->id}}.jpg" class="card-img-top img-fluid" style="max-height: 200px; object-fit: cover; object-position: center;" alt="Picture of {{$hero->name}}">
                             <hr>
                             <p class="card-text">
                                 <strong>Universe:</strong> {{ $hero->faction->universe->name }}<br>

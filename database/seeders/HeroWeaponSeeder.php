@@ -13,17 +13,14 @@ class HeroWeaponSeeder extends Seeder
      */
     public function run(): void
     {
-        $hero = Hero::find(1);
+        $hero = Hero::find(2);
         $hero->weapon()->attach(1);
 
-        $hero = Hero::find(2);
-        $hero->weapon()->attach(2);
-
         $hero = Hero::find(3);
-        $hero->weapon()->attach(3);
+        $hero->weapon()->attach(2);
 
         $hero = Hero::find(4);
+        $hero->weapon()->attach(1);
         $hero->weapon()->attach(2);
-        $hero->weapon()->attach(3);
     }
 }
