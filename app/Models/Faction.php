@@ -12,6 +12,7 @@ class Faction extends Model
     use HasFactory;
     protected $table = 'faction';
     public $timestamps = false;
+    protected $fillable = ['name'];
 
     public function hero(){
         return $this->hasMany(Hero::class);

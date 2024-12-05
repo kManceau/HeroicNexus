@@ -40,7 +40,6 @@ class HeroController extends Controller
             'gender' => 'required',
             'race' => 'required',
             'description' => 'required',
-            'faction' => 'required',
         ]);
         $hero = new Hero([
             'name' => $request->get('name'),
@@ -48,7 +47,24 @@ class HeroController extends Controller
             'race' => $request->get('race'),
             'description' => $request->get('description'),
         ]);
-        $hero->faction()->associate($request->get('faction'));
+        if($request->get('faction')){
+            $hero->faction()->associate($request->get('faction'));
+        } else{
+            $faction = new Faction([
+                'name' => $request->get('new-faction'),
+            ]);
+            if($request->get('universe')){
+               $universe = Universe::find($request->get('universe'));
+            } else{
+                $universe = new Universe([
+                    'name' => $request->get('new-universe'),
+                ]);
+                $universe->save();
+            }
+        }
+        $faction->universe()->associate($universe);
+        $faction->save();
+        $hero->faction()->associate($faction);
         $hero->save();
         return redirect('/hero')->with('message', 'Hero created!');
     }
