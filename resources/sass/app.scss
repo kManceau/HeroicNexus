@@ -6,3 +6,8 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.form-control::file-selector-button,
+.form-control:hover:not(:disabled):not([readonly])::file-selector-button{
+    background: #121212;
+}

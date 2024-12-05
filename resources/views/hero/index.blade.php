@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         <div class="row">
             @foreach($heroes as $hero)
@@ -41,7 +40,7 @@
             @endforeach
 
             <div class="col-md-3 mb-4 d-flex align-items-center justify-content-center">
-                <a href="" type="button" class="btn btn-primary btn-lg">
+                <a href="/hero/create" type="button" class="btn btn-primary btn-lg">
                     Add Another Hero
                 </a>
             </div>

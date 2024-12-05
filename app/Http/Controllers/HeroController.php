@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faction;
 use App\Models\Hero;
+use App\Models\Weapon;
 use Illuminate\Http\Request;
 
 class HeroController extends Controller
@@ -21,7 +23,9 @@ class HeroController extends Controller
      */
     public function create()
     {
-        //
+        $factions = Faction::orderBy('name', 'ASC')->get();
+        $weapons = Weapon::orderBy('name', 'ASC')->get();
+        return view('hero.create', compact('weapons', 'factions'));
     }
 
     /**
