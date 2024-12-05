@@ -9,14 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
         // Faction Form
         const newFactionForm = document.getElementById("new-faction-form");
         newFactionForm.removeAttribute('style');
-        const newFactionInput = document.getElementById("new-faction");
-        newFactionInput.removeAttribute("disabled");
 
         // Universe Selector
         const universeSelector = document.getElementById('universe-selector');
         universeSelector.removeAttribute('style');
-        const universeSelectInput = document.getElementById("universe");
-        universeSelectInput.removeAttribute("disabled");
 
         // Remove the faction selector and new faction button
         const factionSelector = document.getElementById("faction-selector");
@@ -33,12 +29,22 @@ document.addEventListener("DOMContentLoaded", function() {
             // New Universe Form
             const newUniverseForm = document.getElementById("new-universe-form");
             newUniverseForm.removeAttribute('style');
-            const newUniverseInput = document.getElementById("new-universe");
-            newUniverseInput.removeAttribute("disabled");
 
             // Remove the Universe selector and new universe button
             universeSelector.remove();
             newUniverseButton.remove();
         })
     });
+
+    // NEW WEAPON
+    const newWeaponButton = document.getElementById("new-weapon-button");
+    newWeaponButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        // Weapon Form
+        const newWeaponForm = document.getElementById("new-weapon-form");
+        newWeaponForm.removeAttribute('style');
+        const weaponSelector = document.getElementById('weapon-selector');
+        weaponSelector.remove();
+        newWeaponButton.remove();
+    })
 });

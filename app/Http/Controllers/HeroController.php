@@ -50,10 +50,9 @@ class HeroController extends Controller
 
         $faction = $this->handleFaction($request);
         $hero->faction()->associate($faction);
+        $weapon = $this->handleWeapon($request);
         $hero->save();
-        if($request->get('weapon')){
-            $hero->weapon()->attach($request->get('weapon'));
-        }
+        $hero->weapon()->attach($weapon);
         return redirect('/hero')->with('message', 'Hero created!');
     }
 
@@ -80,6 +79,23 @@ class HeroController extends Controller
             $faction->save();
         }
         return $faction;
+    }
+
+    /**
+     * Handle the Weapon Form from Create Method
+     */
+    private function handleWeapon(Request $request)
+    {
+        if($request->get('weapon')){
+            $weapon = Weapon::find($request->get('weapon'));
+        } else{
+            $weapon = new Weapon([
+                'name' => $request->get('new_weapon_name'),
+                'type' => $request->get('new_weapon_type')
+            ]);
+            $weapon->save();
+        }
+        return $weapon;
     }
 
     /**

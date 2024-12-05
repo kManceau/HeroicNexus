@@ -50,12 +50,12 @@
 
                             <div class="form-group my-3" id="new-faction-form" style="display: none;">
                                 <label for="new-faction" class="mt-2 mb-2">New Faction Name</label>
-                                <input type="text" class="form-control" id="new-faction" name="new-faction" disabled="">
+                                <input type="text" class="form-control" id="new-faction" name="new-faction">
                             </div>
 
                             <div class="input-group mt-4 mb-3" id="universe-selector" style="display: none;">
                                 <label for="universe" class="input-group-text" style="background-color:#121212;">Faction's Universe (required)</label>
-                                <select class="form-select" id="universe" name="universe" disabled>
+                                <select class="form-select" id="universe" name="universe">
                                     @foreach($universes as $universe)
                                         <option value="{{$universe->id}}">{{$universe->name}}</option>
                                     @endforeach
@@ -66,13 +66,13 @@
 
                             <div class="form-group my-3" id="new-universe-form" style="display: none;">
                                 <label for="new-universe" class="mt-2 mb-2">New Universe Name</label>
-                                <input type="text" class="form-control" id="new-universe" name="new-universe" disabled="">
+                                <input type="text" class="form-control" id="new-universe" name="new-universe">
                             </div>
 
                             <div class="input-group mt-4 mb-3" id="weapon-selector">
                                 <label for="weapon" class="input-group-text" style="background-color:#121212;">Hero's Weapon</label>
                                 <select class="form-select" id="weapon" name="weapon">
-                                    <option value="">No Weapon</option>
+                                    <option>No Weapon</option>
                                     @foreach($weapons as $weapon)
                                         <option value="{{$weapon->id}}">{{$weapon->name}}</option>
                                     @endforeach
@@ -81,14 +81,14 @@
 
                             <button type="button" class="btn btn-primary my-3" id="new-weapon-button">Add a Weapon</button>
 
-                            <div class="add-weapon-form" style="display: none">
+                            <div id="new-weapon-form" style="display: none">
                                 <div class="form-group my-3">
-                                    <label for="weapons_name" class="mt-2">Weapon Name</label>
-                                    <input type="text" class="form-control" id="weapons_name" name="weapons_name">
+                                    <label for="new_weapon_name" class="mt-2">Weapon Name</label>
+                                    <input type="text" class="form-control" id="new_weapon_name" name="new_weapon_name">
                                 </div>
                                 <div class="form-group my-3">
-                                    <label for="weapon_type" class="mt-2">Weapon Type</label>
-                                    <input type="text" class="form-control" id="weapon_type" name="weapon_type">
+                                    <label for="new_weapon_type" class="mt-2">Weapon Type</label>
+                                    <input type="text" class="form-control" id="new_weapon_type" name="new_weapon_type">
                                 </div>
                             </div>
 
