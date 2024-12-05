@@ -34,5 +34,19 @@ class HeroSeeder extends Seeder
             'race' => 'Human',
             'description' => 'Thief'
         ]);
+        Hero::factory()->create([
+            'faction_id' => 3,
+            'name' => 'Luke Skywalker',
+            'gender' => 'Male',
+            'race' => 'Human',
+            'description' => 'He will not be the last Jedi'
+        ]);
+        Hero::factory()->create([
+            'faction_id' => 3,
+            'name' => 'R2D2',
+            'gender' => '',
+            'race' => 'Droid',
+            'description' => 'Bip ? Boup !'
+        ]);
     }
 }

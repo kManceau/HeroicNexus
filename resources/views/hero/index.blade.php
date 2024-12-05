@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container d-flex">
-        @foreach($heroes as $hero)
-                <div class="col">
-                    <div class="card shadow-lg" style="width: 20rem; border-radius: 15px; overflow: hidden;">
+    <div class="container">
+        <div class="row">
+            @foreach($heroes as $hero)
+                <div class="col-md-3 mb-4">
+                    <div class="card shadow-lg" style="width: 100%; border-radius: 15px; overflow: hidden;">
                         <div class="card-body">
                             <h5 class="card-title text-primary">{{ $hero->name }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ $hero->race }} | {{ $hero->gender }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $hero->race }} @if($hero->gender)| {{ $hero->gender }}@endif</h6>
                             <hr>
                             <p class="card-text">
                                 <strong>Universe:</strong> {{ $hero->faction->universe->name }}<br>
@@ -31,7 +32,9 @@
                     </div>
                 </div>
             @endforeach
+        </div>
     </div>
+
 @endsection
 
 

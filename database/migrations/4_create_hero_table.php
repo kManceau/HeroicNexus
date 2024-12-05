@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('hero', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('gender');
+            $table->string('gender')->nullable();
             $table->string('race');
             $table->text('description');
 
