@@ -4,33 +4,32 @@
     <div class="container d-flex">
         @foreach($heroes as $hero)
                 <div class="col">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card shadow-lg" style="width: 20rem; border-radius: 15px; overflow: hidden;">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $hero->name }}</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">{{ $hero->race }}</h6>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">{{ $hero->gender }}</h6>
-                            <p class="card-text mt-3">
-                                Universe : {{ $hero->faction->universe->name }}<br>
-                                Faction : {{ $hero->faction->name }}
+                            <h5 class="card-title text-primary">{{ $hero->name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $hero->race }} | {{ $hero->gender }}</h6>
+                            <hr>
+                            <p class="card-text">
+                                <strong>Universe:</strong> {{ $hero->faction->universe->name }}<br>
+                                <strong>Faction:</strong> {{ $hero->faction->name }}
                             </p>
                             <p class="card-text">
                                 @if($hero->weapon->count() === 1)
-                                    Weapon :
+                                    <strong>Weapon:</strong>
                                 @else
-                                    Weapons :
+                                    <strong>Weapons:</strong>
                                 @endif
                                 @foreach($hero->weapon as $weapon)
                                     <br>{{ $weapon->name }} - {{ $weapon->type }}
                                 @endforeach
                             </p>
-
-                            <p class="card-text">
-                                {{ $hero->description }}
-                            </p>
-{{--                            <a href="#" class="card-link">Another link</a>--}}
+                            <hr>
+                            <p class="card-text">{{ $hero->description }}</p>
                         </div>
                     </div>
                 </div>
             @endforeach
     </div>
 @endsection
+
+
