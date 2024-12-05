@@ -48,14 +48,28 @@ class HeroController extends Controller
             'description' => $request->get('description'),
         ]);
 
+        $faction = $this->handleFaction($request);
+        $hero->faction()->associate($faction);
+        $hero->save();
+        if($request->get('weapon')){
+            $hero->weapon()->attach($request->get('weapon'));
+        }
+        return redirect('/hero')->with('message', 'Hero created!');
+    }
+
+    /**
+     * Handle the Faction Form from Create Method
+     */
+    private function handleFaction(Request $request)
+    {
         if($request->get('faction')){
-            $hero->faction()->associate($request->get('faction'));
+            $faction = Faction::find($request->get('faction'));
         } else{
             $faction = new Faction([
                 'name' => $request->get('new-faction'),
             ]);
             if($request->get('universe')){
-               $universe = Universe::find($request->get('universe'));
+                $universe = Universe::find($request->get('universe'));
             } else{
                 $universe = new Universe([
                     'name' => $request->get('new-universe'),
@@ -64,13 +78,8 @@ class HeroController extends Controller
             }
             $faction->universe()->associate($universe);
             $faction->save();
-            $hero->faction()->associate($faction);
         }
-        $hero->save();
-        if($request->get('weapon')){
-            $hero->weapon()->attach($request->get('weapon'));
-        }
-        return redirect('/hero')->with('message', 'Hero created!');
+        return $faction;
     }
 
     /**
