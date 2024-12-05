@@ -2,7 +2,7 @@
 
 @section('content')
 
-        <div class="container">
+    <div class="container">
         <div class="row">
             @foreach($heroes as $hero)
                 <div class="col-md-3 mb-4 d-flex align-items-stretch">
@@ -13,7 +13,9 @@
                                     | {{ $hero->gender }}
                                 @endif</h6>
                             <hr>
-                            <img src="img/heroes/{{$hero->id}}.jpg" class="card-img-top img-fluid" style="max-height: 200px; object-fit: cover; object-position: center;" alt="Picture of {{$hero->name}}">
+                            <img src="img/heroes/{{$hero->id}}.jpg" class="card-img-top img-fluid"
+                                 style="max-height: 200px; object-fit: cover; object-position: center;"
+                                 alt="Picture of {{$hero->name}}">
                             <hr>
                             <p class="card-text">
                                 <strong>Universe:</strong> {{ $hero->faction->universe->name }}<br>
@@ -37,8 +39,12 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
+
+            <div class="col-md-3 mb-4 d-flex align-items-center justify-content-center">
+                <a href="" type="button" class="btn btn-primary btn-lg">
+                    Add Another Hero
+                </a>
+            </div>
 @endsection
 
 
