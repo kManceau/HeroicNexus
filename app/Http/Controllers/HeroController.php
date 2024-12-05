@@ -47,6 +47,7 @@ class HeroController extends Controller
             'race' => $request->get('race'),
             'description' => $request->get('description'),
         ]);
+
         if($request->get('faction')){
             $hero->faction()->associate($request->get('faction'));
         } else{
@@ -61,11 +62,14 @@ class HeroController extends Controller
                 ]);
                 $universe->save();
             }
+            $faction->universe()->associate($universe);
+            $faction->save();
+            $hero->faction()->associate($faction);
         }
-        $faction->universe()->associate($universe);
-        $faction->save();
-        $hero->faction()->associate($faction);
         $hero->save();
+        if($request->get('weapon')){
+            $hero->weapon()->attach($request->get('weapon'));
+        }
         return redirect('/hero')->with('message', 'Hero created!');
     }
 
