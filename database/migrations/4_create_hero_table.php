@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('gender');
             $table->string('race');
             $table->text('description');
-            $table->timestamps();
 
             $table->foreignId('faction_id')->constrained('faction')->onDelete('cascade');
         });

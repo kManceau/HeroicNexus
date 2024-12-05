@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('faction', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
 
             $table->foreignId('universe_id')->constrained('universe')->onDelete('cascade');
         });
