@@ -69,11 +69,6 @@
                                 <input type="text" class="form-control" id="new-universe" name="new-universe" disabled="">
                             </div>
 
-                            <div class="form-group my-3">
-                                <label for="image" class="mb-2">Image (Optional)</label><br>
-                                <input type="file" class="form-control" id="image" name="image" >
-                            </div>
-
                             <div class="input-group mt-4 mb-3" id="weapon-selector">
                                 <label for="weapon" class="input-group-text" style="background-color:#121212;">Hero's Weapon</label>
                                 <select class="form-select" id="weapon" name="weapon">
@@ -84,29 +79,23 @@
                                 </select>
                             </div>
 
-{{--                            <div class="form-group my-3">--}}
-{{--                                <label for="weapons_name" class="mt-2">Weapon Name</label>--}}
-{{--                                <input type="text" class="form-control" id="weapons_name" name="weapons_name">--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group my-3">--}}
-{{--                                <label for="weapon_type" class="mt-2">Weapon Type</label>--}}
-{{--                                <input type="text" class="form-control" id="weapon_type" name="weapon_type">--}}
-{{--                            </div>--}}
+                            <button type="button" class="btn btn-primary my-3" id="new-weapon-button">Add a Weapon</button>
 
+                            <div class="add-weapon-form" style="display: none">
+                                <div class="form-group my-3">
+                                    <label for="weapons_name" class="mt-2">Weapon Name</label>
+                                    <input type="text" class="form-control" id="weapons_name" name="weapons_name">
+                                </div>
+                                <div class="form-group my-3">
+                                    <label for="weapon_type" class="mt-2">Weapon Type</label>
+                                    <input type="text" class="form-control" id="weapon_type" name="weapon_type">
+                                </div>
+                            </div>
 
-
-{{--                            <div class="form-group my-3">--}}
-{{--                                <label for="universe_select">Universe (Select)</label>--}}
-{{--                                <select--}}
-{{--                                    class="form-control" id="universe_select" name="universe_select">--}}
-{{--                                    <!-- Options should be dynamically loaded -->--}}
-{{--                                    <option value="marvel">Marvel</option>--}}
-{{--                                    <option value="dc">DC</option>--}}
-{{--                                </select>--}}
-{{--                                <label for="universe_text" class="mt-2">Universe (Text)</label>--}}
-{{--                                <input--}}
-{{--                                    type="text" class="form-control" id="universe_text" name="universe_text">--}}
-{{--                            </div>--}}
+                            <div class="form-group my-3">
+                                <label for="image" class="mb-2">Image (Optional)</label><br>
+                                <input type="file" class="form-control" id="image" name="image" >
+                            </div>
 
                             <button type="submit" class="btn btn-primary my-3">Add Hero</button>
                     </div>

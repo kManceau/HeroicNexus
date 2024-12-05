@@ -11,6 +11,7 @@ class Weapon extends Model
     use HasFactory;
     protected $table = 'weapon';
     public $timestamps = false;
+    protected $fillable = ['name', 'type'];
 
     public function hero(){
         return $this->belongsToMany(Hero::class);

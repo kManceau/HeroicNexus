@@ -12,7 +12,7 @@
                                     | {{ $hero->gender }}
                                 @endif</h6>
                             <hr>
-                            <img src="img/heroes/{{$hero->id}}.jpg" class="card-img-top img-fluid"
+                            <img src="/storage/heroes/{{$hero->id}}.jpg" class="card-img-top img-fluid"
                                  style="max-height: 200px; object-fit: cover; object-position: center;"
                                  alt="Picture of {{$hero->name}}">
                             <hr>
