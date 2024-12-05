@@ -14,14 +14,16 @@
                                 <strong>Faction:</strong> {{ $hero->faction->name }}
                             </p>
                             <p class="card-text">
-                                @if($hero->weapon->count() === 1)
-                                    <strong>Weapon:</strong>
-                                @else
-                                    <strong>Weapons:</strong>
+                                @if($hero->weapon->count() !== 0)
+                                    @if($hero->weapon->count() === 1)
+                                        <strong>Weapon:</strong>
+                                    @else
+                                        <strong>Weapons:</strong>
+                                    @endif
+                                    @foreach($hero->weapon as $weapon)
+                                        <br>{{ $weapon->name }} - {{ $weapon->type }}
+                                    @endforeach
                                 @endif
-                                @foreach($hero->weapon as $weapon)
-                                    <br>{{ $weapon->name }} - {{ $weapon->type }}
-                                @endforeach
                             </p>
                             <hr>
                             <p class="card-text">{{ $hero->description }}</p>
