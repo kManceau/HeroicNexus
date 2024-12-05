@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faction;
 use App\Models\Hero;
+use App\Models\Universe;
 use App\Models\Weapon;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,9 @@ class HeroController extends Controller
     public function create()
     {
         $factions = Faction::join('universe', 'faction.universe_id', '=', 'universe.id') ->orderBy('universe.name', 'ASC') ->select('faction.*') ->get();
+        $universes = Universe::orderBy('name', 'ASC') ->get();
         $weapons = Weapon::orderBy('name', 'ASC')->get();
-        return view('hero.create', compact('weapons', 'factions'));
+        return view('hero.create', compact('weapons', 'factions', 'universes'));
     }
 
     /**

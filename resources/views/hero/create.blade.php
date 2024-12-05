@@ -30,7 +30,7 @@
                                 <input type="text" class="form-control" id="race" name="race" required>
                             </div>
 
-                            <div class="form-group my-3">
+                            <div class="form-group my-3" id="hero-description">
                                 <label for="description" class="mb-2">Hero's Description (Required)</label>
                                 <textarea
                                     class="form-control" id="description" name="description" rows="3"
@@ -46,10 +46,28 @@
                                 </select>
                             </div>
 
-                            {{--                            <div class="form-group my-3">--}}
-                            {{--                                <label for="faction_text" class="mt-2">Faction (Text)</label>--}}
-                            {{--                                <input type="text" class="form-control" id="faction_text" name="faction_text">--}}
-                            {{--                            </div>--}}
+                            <button type="button" class="btn btn-primary my-3" id="new-faction-button">Add a Faction</button>
+
+                            <div class="form-group my-3" id="new-faction-form" style="display: none;">
+                                <label for="new-faction" class="mt-2 mb-2">New Faction Name</label>
+                                <input type="text" class="form-control" id="new-faction" name="new-faction" disabled="">
+                            </div>
+
+                            <div class="input-group mt-4 mb-3" id="universe-selector" style="display: none;">
+                                <label for="universe" class="input-group-text" style="background-color:#121212;">Faction's Universe (required)</label>
+                                <select class="form-select" id="universe" name="universe" disabled>
+                                    @foreach($universes as $universe)
+                                        <option value="{{$universe->id}}">{{$universe->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <button type="button" class="btn btn-primary my-3" id="new-universe-button" style="display: none;">Add a Universe</button>
+
+                            <div class="form-group my-3" id="new-universe-form" style="display: none;">
+                                <label for="new-universe" class="mt-2 mb-2">New Universe Name</label>
+                                <input type="text" class="form-control" id="new-universe" name="new-universe" disabled="">
+                            </div>
 
                             <div class="form-group my-3">
                                 <label for="image" class="mb-2">Image (Optional)</label><br>
@@ -93,6 +111,10 @@
                             <button type="submit" class="btn btn-primary my-3">Add Hero</button>
                     </div>
                 </div>
+@endsection
+
+@section('javascript')
+    <script src="{{ asset('js/createHeroForm.js') }}"></script>
 @endsection
 
 
