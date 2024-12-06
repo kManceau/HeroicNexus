@@ -6,6 +6,7 @@ use App\Models\Faction;
 use App\Models\Hero;
 use App\Models\Universe;
 use App\Models\Weapon;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 
 class HeroController extends Controller
@@ -33,7 +34,7 @@ class HeroController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, ImageService $imageService)
     {
         $request->validate([
             'name' => 'required',
@@ -53,6 +54,9 @@ class HeroController extends Controller
         $weapon = $this->handleWeapon($request);
         $hero->save();
         $hero->weapon()->attach($weapon);
+        if($request->hasFile('image')) {
+            $imageService->uploadImages($request->file('image'), $hero->id, 'heroes');
+        }
         return redirect('/hero')->with('message', 'Hero created!');
     }
 
