@@ -33,9 +33,6 @@
                                 <img src="/storage/heroes/{{$hero->id}}.jpg" alt="Picture of {{$hero->name}}"
                                      class="card-img-top img-fluid" style="max-height: 200px; object-fit: cover; object-position: center;" loading="lazy"/>
                             </picture>
-{{--                            <img src="/storage/heroes/{{$hero->id}}.jpg" class="card-img-top img-fluid"--}}
-{{--                                 style="max-height: 200px; object-fit: cover; object-position: center;"--}}
-{{--                                 alt="Picture of {{$hero->name}}">--}}
                             <hr>
                             <p class="card-text">
                                 <strong>Universe:</strong> {{ $hero->faction->universe->name }}<br>

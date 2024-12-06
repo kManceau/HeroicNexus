@@ -10,7 +10,7 @@ Route::get('/hero/create', [\App\Http\Controllers\HeroController::class, 'create
     ->name('hero.create')
     ->middleware('auth');
 Route::resource('/hero', \App\Http\Controllers\HeroController::class)
-    ->only(['edit', 'destroy'])
+    ->only(['edit', 'update', 'destroy'])
     ->middleware('auth');
 Route::post('/hero/store', [\App\Http\Controllers\HeroController::class, 'store'])
     ->name('hero.store');

@@ -116,7 +116,11 @@ class HeroController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $hero = Hero::find($id);
+        $factions = Faction::join('universe', 'faction.universe_id', '=', 'universe.id') ->orderBy('universe.name', 'ASC') ->select('faction.*') ->get();
+        $universes = Universe::orderBy('name', 'ASC') ->get();
+        $weapons = Weapon::orderBy('name', 'ASC')->get();
+        return view('hero.edit', compact('hero', 'factions', 'universes', 'weapons'));
     }
 
     /**
