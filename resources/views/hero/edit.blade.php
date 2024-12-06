@@ -105,7 +105,7 @@
                                 <input type="file" class="form-control" id="image" name="image" >
                             </div>
 
-                            <button type="submit" class="btn btn-primary my-3">Add Hero</button>
+                            <button type="submit" class="btn btn-primary my-3">Edit Hero</button>
                     </div>
                 </div>
 @endsection

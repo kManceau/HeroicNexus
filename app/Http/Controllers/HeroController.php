@@ -120,15 +120,34 @@ class HeroController extends Controller
         $factions = Faction::join('universe', 'faction.universe_id', '=', 'universe.id') ->orderBy('universe.name', 'ASC') ->select('faction.*') ->get();
         $universes = Universe::orderBy('name', 'ASC') ->get();
         $weapons = Weapon::orderBy('name', 'ASC')->get();
+
         return view('hero.edit', compact('hero', 'factions', 'universes', 'weapons'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id, ImageService $imageService)
     {
-        //
+//        dd($request->get('faction'));
+        $updatedHero = $request->validate([
+            'name' => 'required',
+            'gender' => 'required',
+            'race' => 'required',
+            'description' => 'required',
+        ]);
+        $faction = $this->handleFaction($request);
+        $weapon = $this->handleWeapon($request);
+        $hero = Hero::find($id);
+        $hero->faction()->associate($faction);
+        $hero->weapon()->detach();
+        $hero->weapon()->attach($weapon);
+        $hero->update($updatedHero);
+        if($request->hasFile('image')) {
+            $imageService->uploadImages($request->file('image'), $id, 'heroes');
+        }
+        return redirect('/hero')
+            ->with('message', 'Hero updated!');
     }
 
     /**
