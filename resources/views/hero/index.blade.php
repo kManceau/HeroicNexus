@@ -6,6 +6,14 @@
             @foreach($heroes as $hero)
                 <div class="col-md-3 mb-4 d-flex align-items-stretch">
                     <div class="card shadow-lg w-100" style="border-radius: 15px; overflow: hidden;">
+                        @auth
+                        @if($hero->created_by == Auth::user()->id)
+                            <div class="card-header text-end">
+                                <a href="" class="text-decoration-none text-reset mx-2" title="Edit">📝️</a>
+                                <a href="" class="text-decoration-none text-reset" title="Delete">❌️</a>
+                            </div>
+                        @endif
+                        @endif
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-primary">{{ $hero->name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ $hero->race }} @if($hero->gender)
