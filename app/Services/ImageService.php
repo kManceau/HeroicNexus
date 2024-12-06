@@ -1,9 +1,6 @@
 <?php
 namespace App\Services;
 
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-
 class ImageService
 {
     public function createImages($image):\GdImage

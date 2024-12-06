@@ -18,35 +18,40 @@ class HeroSeeder extends Seeder
             'name' => 'Philippe Poutou',
             'gender' => 'Male',
             'race' => 'Human',
-            'description' => 'Best french politician'
+            'description' => 'Best french politician',
+            'created_by' => 1
         ]);
         Hero::factory()->create([
             'faction_id' => 2,
             'name' => 'Darth Vader',
             'gender' => 'Male',
             'race' => 'Human',
-            'description' => 'Dark Lord of the Sith'
+            'description' => 'Dark Lord of the Sith',
+            'created_by' => 1
         ]);
         Hero::factory()->create([
             'faction_id' => 3,
             'name' => 'Han Solo',
             'gender' => 'Male',
             'race' => 'Human',
-            'description' => 'Thief'
+            'description' => 'Thief',
+            'created_by' => 1
         ]);
         Hero::factory()->create([
             'faction_id' => 3,
             'name' => 'Luke Skywalker',
             'gender' => 'Male',
             'race' => 'Human',
-            'description' => 'He will not be the last Jedi'
+            'description' => 'He will not be the last Jedi',
+            'created_by' => 1
         ]);
         Hero::factory()->create([
             'faction_id' => 3,
             'name' => 'R2D2',
             'gender' => '',
             'race' => 'Droid',
-            'description' => 'Bip ? Boup !'
+            'description' => 'Bip ? Boup !',
+            'created_by' => 1
         ]);
     }
 }

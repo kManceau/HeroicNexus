@@ -71,7 +71,7 @@
 
                             <div class="input-group mt-4 mb-3" id="weapon-selector">
                                 <label for="weapon" class="input-group-text" style="background-color:#121212;">Hero's Weapon</label>
-                                <select class="form-select" id="weapon" name="weapon">
+                                <select class="form-select" id="weapon" name="weapon" multiple>
                                     <option>No Weapon</option>
                                     @foreach($weapons as $weapon)
                                         <option value="{{$weapon->id}}">{{$weapon->name}}</option>
