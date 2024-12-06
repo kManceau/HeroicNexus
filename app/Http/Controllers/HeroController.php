@@ -8,6 +8,7 @@ use App\Models\Universe;
 use App\Models\Weapon;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HeroController extends Controller
 {
@@ -129,8 +130,17 @@ class HeroController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, ImageService $imageService)
     {
-        //
+        $hero = Hero::find($id);
+        if($hero->created_by === Auth::user()->id){
+            $imageService->deleteImages($id, 'heroes');
+            $hero->delete();
+            return redirect()->back()
+                ->with('message', 'Hero deleted!');
+        } else{
+            return redirect()->back()
+                ->with('message', 'You cannot delete this hero!');
+        }
     }
 }

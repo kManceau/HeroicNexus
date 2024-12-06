@@ -8,9 +8,16 @@
                     <div class="card shadow-lg w-100" style="border-radius: 15px; overflow: hidden;">
                         @auth
                         @if($hero->created_by == Auth::user()->id)
-                            <div class="card-header text-end">
-                                <a href="" class="text-decoration-none text-reset mx-2" title="Edit">📝️</a>
-                                <a href="" class="text-decoration-none text-reset" title="Delete">❌️</a>
+                            <div class="card-header d-flex justify-content-end">
+                                <form action="{{ route('hero.edit', $hero) }}" method="GET">
+                                    @csrf
+                                    <button type="submit" style="background:none;border:none;" title="Edit">📝️</button>
+                                </form>
+                                <form action="{{ route('hero.destroy', $hero) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" style="background:none;border:none;" title="Delete">❌️</button>
+                                </form>
                             </div>
                         @endif
                         @endif

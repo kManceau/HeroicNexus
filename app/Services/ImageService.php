@@ -42,14 +42,15 @@ class ImageService
 
     public function deleteImages($id, $folder):void
     {
-        if(file_exists('app/public/'.$folder.'/'.$id.'.jpg')){
-            unlink('app/public/'.$folder.'/'.$id.'.jpg');
+        $path = storage_path('app/public/'. $folder . '/' . $id);
+        if(file_exists($path . '.jpg')){
+            unlink($path . '.jpg');
         }
-        if(file_exists('app/public/'.$folder.'/'.$id.'.webp')){
-            unlink('app/public/'.$folder.'/'.$id.'.webp');
+        if(file_exists($path . '.webp')){
+            unlink($path . '.webp');
         }
-        if(file_exists('app/public/'.$folder.'/'.$id.'.avif')){
-            unlink('app/public/'.$folder.'/'.$id.'.avif');
+        if(file_exists($path . '.avif')){
+            unlink($path . '.avif');
         }
     }
 }
