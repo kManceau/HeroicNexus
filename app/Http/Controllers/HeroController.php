@@ -58,7 +58,7 @@ class HeroController extends Controller
         if($request->hasFile('image')) {
             $imageService->uploadImages($request->file('image'), $hero->id, 'heroes');
         }
-        return redirect('/hero')->with('message', 'Hero created!');
+        return redirect('/hero')->with('success', 'Hero created!');
     }
 
     /**
@@ -117,11 +117,15 @@ class HeroController extends Controller
     public function edit(string $id)
     {
         $hero = Hero::find($id);
-        $factions = Faction::join('universe', 'faction.universe_id', '=', 'universe.id') ->orderBy('universe.name', 'ASC') ->select('faction.*') ->get();
-        $universes = Universe::orderBy('name', 'ASC') ->get();
-        $weapons = Weapon::orderBy('name', 'ASC')->get();
-
-        return view('hero.edit', compact('hero', 'factions', 'universes', 'weapons'));
+        if($hero->created_by === Auth::user()->id){
+            $factions = Faction::join('universe', 'faction.universe_id', '=', 'universe.id') ->orderBy('universe.name', 'ASC') ->select('faction.*') ->get();
+            $universes = Universe::orderBy('name', 'ASC') ->get();
+            $weapons = Weapon::orderBy('name', 'ASC')->get();
+            return view('hero.edit', compact('hero', 'factions', 'universes', 'weapons'));
+        } else {
+            return redirect()->back()
+                ->with('error', 'You cannot edit this hero!');
+        }
     }
 
     /**
@@ -147,7 +151,7 @@ class HeroController extends Controller
             $imageService->uploadImages($request->file('image'), $id, 'heroes');
         }
         return redirect('/hero')
-            ->with('message', 'Hero updated!');
+            ->with('success', 'Hero updated!');
     }
 
     /**
@@ -160,10 +164,10 @@ class HeroController extends Controller
             $imageService->deleteImages($id, 'heroes');
             $hero->delete();
             return redirect()->back()
-                ->with('message', 'Hero deleted!');
+                ->with('success', 'Hero deleted!');
         } else{
             return redirect()->back()
-                ->with('message', 'You cannot delete this hero!');
+                ->with('error', 'You cannot delete this hero!');
         }
     }
 }

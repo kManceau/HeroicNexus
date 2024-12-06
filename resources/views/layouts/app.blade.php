@@ -77,8 +77,10 @@
 
         <main class="py-4">
             <div class="container">
-                @if (session()->get('message'))
-                    <p class="alert alert-success">{{ session()->get('message') }}</p>
+                @if (session()->get('success'))
+                    <p class="alert alert-success">{{ session()->get('success') }}</p>
+                @elseif(session()->get('error'))
+                    <p class="alert alert-danger">{{ session()->get('error') }}</p>
                 @endif
 
                 @if ($errors->any())
