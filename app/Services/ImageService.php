@@ -35,14 +35,11 @@ class ImageService
     public function uploadImages($img, $id, $folder):void
     {
         $image = $this->createImages($img);
+        $path = storage_path('app/public/'. $folder . '/' . $id);
 
-        $jpegPath = storage_path('app/public/'. $folder . '/' . $id . '.jpg');
-        $webpPath = storage_path('app/public/'. $folder . '/' . $id . '.webp');
-        $avifPath = storage_path('app/public/'. $folder . '/' . $id . '.avif');
-
-        imagejpeg($image, $jpegPath, 100);
-        imagewebp($image, $webpPath, 100);
-        imageavif($image, $avifPath, 80);
+        imagejpeg($image, $path.'.jpg', 100);
+        imagewebp($image, $path.'.webp', 100);
+        imageavif($image, $path.'.avif', 80);
         imagedestroy($image);
     }
 
@@ -53,6 +50,9 @@ class ImageService
         }
         if(file_exists('app/public/'.$folder.'/'.$id.'.webp')){
             unlink('app/public/'.$folder.'/'.$id.'.webp');
+        }
+        if(file_exists('app/public/'.$folder.'/'.$id.'.avif')){
+            unlink('app/public/'.$folder.'/'.$id.'.avif');
         }
     }
 }
