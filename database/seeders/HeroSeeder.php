@@ -53,5 +53,13 @@ class HeroSeeder extends Seeder
             'description' => 'Bip ? Boup !',
             'created_by' => 1
         ]);
+        Hero::factory()->create([
+            'faction_id' => 3,
+            'name' => 'Ahsoka Tano',
+            'gender' => 'Female',
+            'race' => 'Trogruta',
+            'description' => 'Anakin Skywalker\'s Padawan, embodying the light side of the Force, is best known for the tattoo on my hand.',
+            'created_by' => 2
+        ]);
     }
 }

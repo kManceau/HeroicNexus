@@ -53,6 +53,7 @@ class HeroController extends Controller
         $faction = $this->handleFaction($request);
         $hero->faction()->associate($faction);
         $weapon = $this->handleWeapon($request);
+        $hero->created_by = Auth::id();
         $hero->save();
         $hero->weapon()->attach($weapon);
         if($request->hasFile('image')) {
@@ -101,14 +102,6 @@ class HeroController extends Controller
             $weapon->save();
         }
         return $weapon;
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
