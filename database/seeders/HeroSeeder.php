@@ -16,8 +16,8 @@ class HeroSeeder extends Seeder
         Hero::factory()->create([
             'faction_id' => 1,
             'name' => 'Philippe Poutou',
-            'gender' => 'Male',
-            'race' => 'Human',
+            'gender' => 'Male (really ? :( )',
+            'race' => 'God himself',
             'description' => 'Best french politician',
             'created_by' => 1
         ]);

@@ -21,6 +21,7 @@ class HeroWeaponSeeder extends Seeder
 
         $hero = Hero::find(4);
         $hero->weapon()->attach(1);
+        $hero->weapon()->attach(2);
 
         $hero = Hero::find(6);
         $hero->weapon()->attach(1);
